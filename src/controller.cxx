@@ -4,6 +4,7 @@ Controller::Controller()
         : view_(model_)
 { }
 
+
 void
 Controller::draw(ge211::Sprite_set& set)
 {
@@ -12,17 +13,34 @@ Controller::draw(ge211::Sprite_set& set)
 
 void Controller::on_key(ge211::Key key){
     if (key == ge211::Key::up() or key == ge211::Key::code('w')){
-        model_.set_key('w');
+        Position frog_pos = model_.frog_.get_frog_position();
+        if(frog_pos.y != 0){
+            model_.frog_.set_frog_position({frog_pos.x, frog_pos.y-1});
+        }
     }
     if (key == ge211::Key::down() or key == ge211::Key::code('s')){
-        model_.set_key('s');
+        Position frog_pos = model_.frog_.get_frog_position();
+        if (frog_pos.y != (model_.get_board_size().height)-1){
+            model_.frog_.set_frog_position({frog_pos.x, frog_pos.y+1});
+        }
     }
     if (key == ge211::Key::left() or key == ge211::Key::code('a')){
-        model_.set_key('a');
+        Position frog_pos = model_.frog_.get_frog_position();
+        if(frog_pos.x != 0){
+            model_.frog_.set_frog_position({frog_pos.x-1, frog_pos.y});
+        }
     }
     if (key == ge211::Key::right() or key == ge211::Key::code('d')){
-        model_.set_key('d');
+        Position frog_pos = model_.frog_.get_frog_position();
+        if(frog_pos.x != (model_.get_board_size().width-1)){
+            model_.frog_.set_frog_position({frog_pos.x+1, frog_pos.y});
+        }
     }
+}
+
+void Controller::on_frame(double dt)
+{
+    model_.on_frame(dt);
 }
 
 View::Dimensions

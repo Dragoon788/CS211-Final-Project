@@ -22,6 +22,10 @@ public:
     Dimensions initial_window_dimensions() const;
 
     std::string initial_window_title() const;
+
+    View::Position board_to_screen(Model::Position pos) const;
+
+    View::Position screen_to_board(Model::Position pos) const;
 private:
     Model const& model_;
 
