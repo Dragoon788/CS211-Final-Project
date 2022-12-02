@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../.cs211/lib/ge211/include/ge211_geometry.hxx"
+#include <ge211.hxx>
 #include "car.hxx"
 
 /// Convenient type aliases:

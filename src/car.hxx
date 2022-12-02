@@ -1,11 +1,10 @@
 #pragma once
 
-#include "../.cs211/lib/ge211/include/ge211_geometry.hxx"
+#include <ge211.hxx>
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
 using Position = ge211::Posn<int>;
-//using Rectangle = ge211::Rect<int>;
 
 class Car
 {
