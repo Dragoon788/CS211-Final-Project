@@ -19,7 +19,13 @@ TEST_CASE("going forward add score, back does not")
 
     CHECK(model.get_score() == 0);
     CHECK(model.frog_.get_frog_life());
+}
 
+TEST_CASE("when hit top, reset position")
+{
+    Model model;
+
+    model.frog_.set_frog_position({2, 1});
 
 }
 // go forward/back add/subtract score

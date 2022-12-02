@@ -6,8 +6,8 @@ using Position = ge211::Posn<int>;
 using Rectangle = ge211::Rect<int>;
 
 Frog::Frog(bool frog_life_, Position frog_position_):
-        frog_life_(frog_life_),
-        frog_position_(frog_position_)
+        frog_position_(frog_position_),
+        frog_life_(frog_life_)
 {}
 bool Frog::get_frog_life() const
 {

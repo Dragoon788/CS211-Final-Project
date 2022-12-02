@@ -6,7 +6,7 @@
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
 using Position = ge211::Posn<int>;
-using Rectangle = ge211::Rect<int>;
+//using Rectangle = ge211::Rect<int>;
 
 class Frog
 {

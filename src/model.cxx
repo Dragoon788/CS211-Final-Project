@@ -1,5 +1,6 @@
 #include "model.hxx"
 #include "car.hxx"
+#include "frog.hxx"
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;

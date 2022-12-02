@@ -5,7 +5,7 @@ if(NOT GE211_INHERITED)
     find_package(Ge211 2021.1 REQUIRED)
 endif()
 
-add_executable(fireworks fireworks.cxx ../../../../src/frog.cxx ../../../../src/frog.hxx ../../../../src/car.cxx ../../../../src/car.hxx)
+add_executable(fireworks fireworks.cxx ../../../../src/car.hxx)
 set_target_properties(fireworks PROPERTIES
         CXX_STANDARD            14
         CXX_STANDARD_REQUIRED   On
