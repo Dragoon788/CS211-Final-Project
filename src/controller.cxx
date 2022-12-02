@@ -11,16 +11,19 @@ Controller::draw(ge211::Sprite_set& set)
     view_.draw(set);
 }
 
-void Controller::on_key(ge211::Key key){
+void Controller::on_key_down(ge211::Key key){
     if (key == ge211::Key::up() or key == ge211::Key::code('w')){
         Position frog_pos = model_.frog_.get_frog_position();
-        if(frog_pos.y != 0){
+        if(frog_pos.y != 2){
             model_.frog_.set_frog_position({frog_pos.x, frog_pos.y-1});
+        }
+        else{
+            model_.frog_.set_frog_position(model_.get_initial_frog_pos());
         }
     }
     if (key == ge211::Key::down() or key == ge211::Key::code('s')){
         Position frog_pos = model_.frog_.get_frog_position();
-        if (frog_pos.y != (model_.get_board_size().height)-1){
+        if (frog_pos.y != (model_.get_board_size().height)+1){
             model_.frog_.set_frog_position({frog_pos.x, frog_pos.y+1});
         }
     }

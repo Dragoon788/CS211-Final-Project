@@ -9,7 +9,7 @@ class Controller : public ge211::Abstract_game
 {
 public:
     Controller();
-    void on_key(ge211::Key key) override;
+    void on_key_down(ge211::Key key) override;
     void on_frame(double dt) override;
 
 protected:

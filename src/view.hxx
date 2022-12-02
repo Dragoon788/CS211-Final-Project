@@ -34,4 +34,7 @@ private:
     ge211::Rectangle_sprite const road_sprite_;
     ge211::Rectangle_sprite const car_sprite_;
     ge211::Rectangle_sprite const frog_sprite_;
+    ge211::Font const sans72_;
+    ge211::Font const sans16_;
+    ge211::Text_sprite const game_over_sprite_;
 };
