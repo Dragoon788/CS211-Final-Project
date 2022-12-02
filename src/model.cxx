@@ -1,7 +1,7 @@
 #include "model.hxx"
 #include "car.hxx"
 #include "frog.hxx"
-
+#include "controller.hxx"
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
 using Position = ge211::Posn<int>;
@@ -77,4 +77,15 @@ void Model::set_score()
 void Model::subtract_score()
 {
     fake_score--;
+}
+
+void Model::move_forward()
+{
+    Position frog_pos = frog_.get_frog_position();
+    if (frog_pos.y > 2) {
+        frog_.set_frog_position({frog_pos.x, frog_pos.y - 1});
+        set_score();
+    } else {
+        frog_.set_frog_position(get_initial_frog_pos());
+    }
 }

@@ -48,6 +48,7 @@ public:
 // Subtract fake_score
     void subtract_score();
 
+    void move_forward();
 private:
 
     int const board_size_ = 15;

@@ -31,7 +31,7 @@ void Frog::set_frog_position(Position p)
 
 bool Frog::hits_car(Frog f, Car c){
     return f.get_frog_position().y == c.get_car_position().y
-           && f.get_frog_position().x <= (c.get_car_position().x + 1)
+           && f.get_frog_position().x <= c.get_car_position().x + 1
            && f.get_frog_position().x >= c.get_car_position().x - 1;
 }
 
