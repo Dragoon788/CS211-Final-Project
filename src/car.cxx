@@ -1,5 +1,4 @@
 #include "car.hxx"
-#include "../.cs211/lib/ge211/include/ge211_geometry.hxx"
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
@@ -14,7 +13,7 @@ Position Car::get_car_position() const
     return car_position_;
 }
 
-Car Car::next(double dt){
+void Car::next(double dt){
     if (car_position_.x >= 15) {
         car_position_.x -= 18;
     }

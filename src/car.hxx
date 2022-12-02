@@ -20,7 +20,7 @@ public:
     Position get_car_position() const;
 
     /// Gets us the next car given dt
-    Car next(double dt);
+    void next(double dt);
 
 private:
     Position car_position_;

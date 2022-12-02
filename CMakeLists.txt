@@ -8,7 +8,9 @@ include(.cs211/cmake/CMakeLists.txt)
 
 # TODO: PUT ADDITIONAL MODEL .cxx FILES IN THIS LIST:
 set(MODEL_SRC
-        src/model.cxx)
+        src/model.cxx
+        src/frog.cxx
+        src/car.cxx)
 
 # TODO: PUT ADDITIONAL NON-MODEL (UI) .cxx FILES IN THIS LIST:
 add_program(${GAME_EXE}
