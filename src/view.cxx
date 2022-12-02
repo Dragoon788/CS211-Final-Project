@@ -15,8 +15,13 @@ View::View(Model const& model)
         : model_(model),
         grass_sprite_({grid_size, grid_size}, grass_green),
         road_sprite_({grid_size, grid_size}, road_gray),
+<<<<<<< HEAD
         car_sprite_({grid_size * 2, grid_size}, car_red),
         frog_sprite_({grid_size - 10, grid_size - 3}, frog_green),
+=======
+        finish_sprite_({grid_size, grid_size}, car_red),
+        frog_sprite_({grid_size-10, grid_size-3}, frog_green),
+>>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
         frog_sprite_2_("frog_sprite_.png"),
         grass_sprite_2_("grass_sprite_.png"),
         car_sprite_2_("car_sprite_.png"),
@@ -38,6 +43,7 @@ View::board_to_screen(Model::Position pos) const
 void
 View::draw(Sprite_set& set)
 {
+<<<<<<< HEAD
     // This needs to do something!
     if (!model_.frog_.get_frog_life()){
         set.add_sprite(game_over_sprite_, {initial_window_dimensions().width / (7 / 2),initial_window_dimensions().height / 2});
@@ -49,17 +55,43 @@ View::draw(Sprite_set& set)
         set.add_sprite(score_sprite_, {initial_window_dimensions().width / (7 / 2) + 200,
                                        initial_window_dimensions().height / 2 + 69}, 4);
     } else {
+=======
+    /// Basically checks if game is over and then executes game over sequence
+    if(!model_.frog_.get_frog_life()){
+        set.add_sprite(game_over_sprite_, {initial_window_dimensions().width/3-30,initial_window_dimensions().height/2-100});
+        ge211::Text_sprite::Builder score_builder(videogame72_);
+        int final_score = model_.get_score();
+        score_builder.add_message(std::to_string(final_score));
+        score_sprite_.reconfigure(score_builder);
+        set.add_sprite(score_sprite_, {initial_window_dimensions().width/3 + 70,initial_window_dimensions().height/2 + 100});
+    }
+    else{
+        /// Initializes the builder to change the score sprite
+>>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
         ge211::Text_sprite::Builder score_builder(videogame72_);
         score_builder.add_message(std::to_string(model_.get_score()));
         score_sprite_.reconfigure(score_builder);
+        /// Draws score counter
         set.add_sprite(score_words_sprite_, board_to_screen({8, 1}), 4);
         set.add_sprite(score_sprite_, board_to_screen({12,1}), 4);
+<<<<<<< HEAD
+=======
+
+        ///Draws all the road
+>>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
         for (auto p: model_.all_positions()) {
             for (auto road_pos: model_.get_car_positions()) {
                 if (road_pos.y == p.y) {
                     set.add_sprite(road_sprite_, board_to_screen(p), 1);
                 }
+<<<<<<< HEAD
                 else {
+=======
+                if(p.y == 2){
+                    set.add_sprite(finish_sprite_,board_to_screen(p), 1);
+                }
+                else{
+>>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
                     set.add_sprite(grass_sprite_, board_to_screen(p), 0);
                 }
             }
@@ -67,10 +99,16 @@ View::draw(Sprite_set& set)
         for (auto car : model_.get_cars()){
             set.add_sprite(car_sprite_2_,board_to_screen(car.get_car_position()), 3);
         }
+<<<<<<< HEAD
         set.add_sprite(frog_sprite_2_, board_to_screen(model_.frog_.get_frog_position()), 2);
+=======
+        set.add_sprite(frog_sprite_2_, board_to_screen(model_.frog_
+                                                           .get_frog_position()), 2);
+        set.add_sprite(score_sprite_, board_to_screen({12,1}));
+        ge211::Text_sprite::Builder builder(videogame72_);
+>>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
     }
 }
-
 
 View::Dimensions
 View::initial_window_dimensions() const
@@ -86,3 +124,4 @@ View::initial_window_title() const
     // You can change this if you want:
     return "Frogger";
 }
+
