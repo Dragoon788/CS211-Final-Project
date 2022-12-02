@@ -1,6 +1,5 @@
 #include "model.hxx"
 #include "car.hxx"
-#include <iostream>
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
@@ -11,8 +10,8 @@ using Rectangle = ge211::Rect<int>;
 Model::Model():
     frog_(true, initial_frog_pos_)
 {
-    for(int i = 0; i<11; i++){
-        Car new_car = Car(car_positions_[i], car_velocities_[i]);
+    for (int i = 0; i < 11; i++) {
+        Car new_car = Car(car_positions_[i]);
         cars_.push_back(new_car);
     }
 }
@@ -24,13 +23,13 @@ Dimensions Model::get_board_size() const
 
 void Model::on_frame(double dt)
 {
-    while(frog_.get_frog_life()){
-        time_counter ++;
+    while (frog_.get_frog_life()) {
+        time_counter++;
         if (time_counter < 30) {
             return;
         }
-        else{
-            time_counter=0;
+        else {
+            time_counter = 0;
             for (auto& car : cars_){
                 car.next(dt);
                 if (frog_.hits_car(frog_, car)){
@@ -51,11 +50,6 @@ std::vector<Position> Model::get_car_positions() const
     return car_positions_;
 }
 
-std::vector<Dimensions> Model::get_car_velocities() const
-{
-    return car_velocities_;
-}
-
 std::vector<Car> Model::get_cars() const
 {
     return cars_;
@@ -73,10 +67,13 @@ int Model::get_score() const
 
 void Model::set_score()
 {
-    score_counter++;
+    if (fake_score == score_counter) {
+        score_counter++;
+    }
+    fake_score++;
 }
 
 void Model::subtract_score()
 {
-    score_counter--;
+    fake_score--;
 }

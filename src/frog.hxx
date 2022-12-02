@@ -35,5 +35,4 @@ public:
 private:
     Position frog_position_;
     bool frog_life_;
-
 };

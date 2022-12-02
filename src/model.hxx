@@ -30,24 +30,22 @@ public:
     void on_frame(double dt);
 
 
-/// Getter function for a vector of positions where cars will spawn
+// Getter function for a vector of positions where cars will spawn
     std::vector<Position> get_car_positions() const;
 
-///  Getter function for a vector of velocities for each car
-    std::vector<Dimensions> get_car_velocities() const;
-
-/// Getter function for all the cars
+// Getter function for all the cars
     std::vector<Car> get_cars() const;
 
-///  Getter function the starting frog position
+//  Getter function the starting frog position
     Position get_initial_frog_pos() const;
 
-/// Getter function for the score
+// Getter function for the score
     int get_score() const;
 
-/// Add score to counter
+// Add score to counter
     void set_score();
 
+// Subtract fake_score
     void subtract_score();
 
 private:
@@ -56,13 +54,12 @@ private:
     std::vector<Position> car_positions_ = {{10, 4}, {5,4}, {3, 5}, {-3,6},
                                              {3,7}, {11,7}, {-5,10}, {10, 11},
                                              {-3, 11},{5,12}, {8,13}};
-    std::vector<Dimensions> car_velocities_ = {{1,0}, {2,0}, {1,0}, {1,0},
-                                               {1,0}, {1,0},{2,0},{1,0},
-                                               {1,0}, {4,0}, {1,0}};
     std::vector<Car> cars_;
-    Position initial_frog_pos_ = {board_size_/2, board_size_+1};
+    Position initial_frog_pos_ = {board_size_ / 2, board_size_ + 1};
     int time_counter = 30;
-    int score_counter = 15;
+    int score_counter = 0;
+    int fake_score = 0;
+
 public:
     /// Constructs the frog class
     Frog frog_;

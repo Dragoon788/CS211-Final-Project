@@ -11,9 +11,6 @@ public:
 /// View positions will use `int` coordinates.
     using Position = ge211::Posn<int>;
 
-/// View rectangles will use `int` coordinates.
-    using Rectangle = ge211::Rect<int>;
-
 ///  Constructs a view that knows about the given model.
     explicit View(Model const& model);
 
@@ -25,7 +22,6 @@ public:
 
     View::Position board_to_screen(Model::Position pos) const;
 
-    View::Position screen_to_board(Model::Position pos) const;
 private:
     Model const& model_;
 
