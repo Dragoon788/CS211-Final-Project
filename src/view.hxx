@@ -22,12 +22,6 @@ public:
 
     View::Position board_to_screen(Model::Position pos) const;
 
-<<<<<<< HEAD
-=======
-    View::Position screen_to_board(Model::Position pos) const;
-
-
->>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
 private:
     Model const& model_;
 
@@ -35,7 +29,6 @@ private:
     ge211::Rectangle_sprite const grass_sprite_;
     ge211::Rectangle_sprite const road_sprite_;
     ge211::Rectangle_sprite const finish_sprite_;
-    ge211::Rectangle_sprite const frog_sprite_;
     ge211::Image_sprite const frog_sprite_2_;
     ge211::Image_sprite const grass_sprite_2_;
     ge211::Image_sprite const car_sprite_2_;

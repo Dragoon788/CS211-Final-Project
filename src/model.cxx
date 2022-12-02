@@ -23,16 +23,12 @@ Dimensions Model::get_board_size() const
 
 void Model::on_frame(double dt)
 {
-    while (frog_.get_frog_life()) {
+    while(frog_.get_frog_life()){
         time_counter++;
         if (time_counter < 30) {
-    while(frog_.get_frog_life()){
-        time_counter ++;
-        if (time_counter < 15) {
->>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
             return;
         }
-        else {
+        else{
             time_counter = 0;
             for (auto& car : cars_){
                 car.next(dt);
@@ -79,11 +75,5 @@ void Model::set_score()
 
 void Model::subtract_score()
 {
-<<<<<<< HEAD
     fake_score--;
 }
-=======
-    score_counter--;
-}
-
->>>>>>> 711266f2b608e922d8fbc1eecba9e6f9e99750e7
