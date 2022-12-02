@@ -26,13 +26,15 @@ public:
     View::Position board_to_screen(Model::Position pos) const;
 
     View::Position screen_to_board(Model::Position pos) const;
+
+
 private:
     Model const& model_;
 
 /// sprites
     ge211::Rectangle_sprite const grass_sprite_;
     ge211::Rectangle_sprite const road_sprite_;
-    ge211::Rectangle_sprite const car_sprite_;
+    ge211::Rectangle_sprite const finish_sprite_;
     ge211::Rectangle_sprite const frog_sprite_;
     ge211::Image_sprite const frog_sprite_2_;
     ge211::Image_sprite const grass_sprite_2_;

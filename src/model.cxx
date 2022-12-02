@@ -1,6 +1,6 @@
 #include "model.hxx"
 #include "car.hxx"
-#include <iostream>
+
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
@@ -26,7 +26,7 @@ void Model::on_frame(double dt)
 {
     while(frog_.get_frog_life()){
         time_counter ++;
-        if (time_counter < 30) {
+        if (time_counter < 15) {
             return;
         }
         else{
@@ -80,3 +80,4 @@ void Model::subtract_score()
 {
     score_counter--;
 }
+

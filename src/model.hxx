@@ -53,17 +53,17 @@ public:
 private:
 
     int const board_size_ = 15;
-    std::vector<Position> car_positions_ = {{10, 4}, {5,4}, {3, 5}, {-3,6},
-                                             {3,7}, {11,7}, {-5,10}, {10, 11},
-                                             {-3, 11},{5,12}, {8,13}};
+    std::vector<Position> car_positions_ = {{10, 5}, {5,5}, {3, 6}, {-3,7},
+                                             {3,8}, {11,8}, {-5,11}, {10, 12},
+                                             {-3, 12},{5,13}, {8,14}};
     std::vector<Dimensions> car_velocities_ = {{1,0}, {2,0}, {1,0}, {1,0},
                                                {1,0}, {1,0},{2,0},{1,0},
                                                {1,0}, {4,0}, {1,0}};
-    std::vector<Car> cars_;
     Position initial_frog_pos_ = {board_size_/2, board_size_+1};
-    int time_counter = 30;
-    int score_counter = 15;
+    int time_counter = 15;
+    int score_counter = 0;
 public:
     /// Constructs the frog class
+    std::vector<Car> cars_;
     Frog frog_;
 };
