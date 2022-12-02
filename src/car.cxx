@@ -31,9 +31,13 @@ void Car::set_car_velocity(Dimensions d)
 }
 
 Car Car::next(double dt){
-    Car result(*this);
-    result.car_position_ += car_velocity_ * dt *1000;
-    return result;
-    // car_position_.x += 1*dt;
+    // Car result(*this);
+    // result.car_position_ += car_velocity_ * dt *1000;
+    // return result;
+    // car_position_.x += car_velocity_.width *60 * dt;
+    if (car_position_.x >= 15){
+        car_position_.x -= 18;
+    }
+    car_position_.x += 60 * dt;
 }
 
