@@ -1,5 +1,4 @@
 #include "view.hxx"
-#include "frog.hxx"
 
 // Convenient type aliases:
 using Color = ge211::Color;
@@ -26,7 +25,8 @@ View::View(Model const& model)
         sans16_("sans.ttf", 16),
         videogame72_("VideoGame.ttf", 32),
         game_over_sprite_("GAME OVER", videogame72_),
-        score_sprite_(std::to_string(model_.get_score()), videogame72_)
+        score_sprite_(std::to_string(model_.get_score()), videogame72_),
+        score_words_sprite_("Score: ", videogame72_)
 {
 }
 
@@ -47,16 +47,22 @@ View::draw(ge211::Sprite_set& set)
 {
     // This needs to do something!
     if(!model_.frog_.get_frog_life()){
-        set.add_sprite(game_over_sprite_, {initial_window_dimensions()
-        .width/(7/2),initial_window_dimensions().height/2});
-        set.add_sprite(score_sprite_, {initial_window_dimensions()
-                                               .width/(7/2),
-                                               initial_window_dimensions()
-                                               .height/2 + 20});
+        set.add_sprite(game_over_sprite_, {initial_window_dimensions().width/(7/2),initial_window_dimensions().height/2});
+        ge211::Text_sprite::Builder score_builder(videogame72_);
+        int final_score = model_.get_score();
+        score_builder.add_message(std::to_string(final_score));
+        score_sprite_.reconfigure(score_builder);
+        set.add_sprite(score_sprite_, {initial_window_dimensions().width/(7/2),initial_window_dimensions().height/2 + 200});
     }
-    else{
+    else{ge211::Text_sprite::Builder score_builder(videogame72_);
+        score_builder.add_message(std::to_string(model_.get_score()));
+        score_sprite_.reconfigure(score_builder);
+        set.add_sprite(score_words_sprite_, board_to_screen({8, 1}), 4);
+        set.add_sprite(score_sprite_, board_to_screen({12,
+                                                       1}), 4);
         for (auto p: model_.all_positions()) {
             for(auto road_pos: model_.get_car_positions()){
+
                 if (road_pos.y == p.y){
                     set.add_sprite(road_sprite_, board_to_screen(p), 1);
                 }

@@ -41,5 +41,6 @@ private:
     ge211::Font const sans16_;
     ge211::Font const videogame72_;
     ge211::Text_sprite const game_over_sprite_;
-    ge211::Text_sprite const score_sprite_;
+    ge211::Text_sprite score_sprite_;
+    ge211::Text_sprite score_words_sprite_;
 };

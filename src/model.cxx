@@ -1,7 +1,6 @@
 #include "model.hxx"
-#include "frog.hxx"
 #include "car.hxx"
-
+#include <iostream>
 
 /// Convenient type aliases:
 using Dimensions = ge211::Dims<int>;
@@ -25,9 +24,9 @@ Dimensions Model::get_board_size() const
 
 void Model::on_frame(double dt)
 {
-    while(frog_.get_frog_life() != false){
+    while(frog_.get_frog_life()){
         time_counter ++;
-        if (time_counter<30) {
+        if (time_counter < 30) {
             return;
         }
         else{
@@ -75,4 +74,9 @@ int Model::get_score() const
 void Model::set_score()
 {
     score_counter++;
+}
+
+void Model::subtract_score()
+{
+    score_counter--;
 }

@@ -12,32 +12,35 @@ Controller::draw(ge211::Sprite_set& set)
 }
 
 void Controller::on_key_down(ge211::Key key){
-    if (key == ge211::Key::up() or key == ge211::Key::code('w')){
-        Position frog_pos = model_.frog_.get_frog_position();
-        if(frog_pos.y != 2){
-            model_.frog_.set_frog_position({frog_pos.x, frog_pos.y-1});
-            model_.set_score();
+    if (model_.frog_.get_frog_life()) {
+        if (key == ge211::Key::up() or key == ge211::Key::code('w')) {
+            Position frog_pos = model_.frog_.get_frog_position();
+            if (frog_pos.y != 2) {
+                model_.frog_.set_frog_position({frog_pos.x, frog_pos.y - 1});
+                model_.set_score();
+            } else {
+                model_.frog_.set_frog_position(model_.get_initial_frog_pos());
+            }
         }
-        else{
-            model_.frog_.set_frog_position(model_.get_initial_frog_pos());
+        if (key == ge211::Key::down() or key == ge211::Key::code('s')) {
+            Position frog_pos = model_.frog_.get_frog_position();
+            if (frog_pos.y != (model_.get_board_size().height) + 1) {
+                model_.frog_.set_frog_position({frog_pos.x, frog_pos.y + 1});
+                model_.subtract_score();
+            }
+
         }
-    }
-    if (key == ge211::Key::down() or key == ge211::Key::code('s')){
-        Position frog_pos = model_.frog_.get_frog_position();
-        if (frog_pos.y != (model_.get_board_size().height)+1){
-            model_.frog_.set_frog_position({frog_pos.x, frog_pos.y+1});
+        if (key == ge211::Key::left() or key == ge211::Key::code('a')) {
+            Position frog_pos = model_.frog_.get_frog_position();
+            if (frog_pos.x != 0) {
+                model_.frog_.set_frog_position({frog_pos.x - 1, frog_pos.y});
+            }
         }
-    }
-    if (key == ge211::Key::left() or key == ge211::Key::code('a')){
-        Position frog_pos = model_.frog_.get_frog_position();
-        if(frog_pos.x != 0){
-            model_.frog_.set_frog_position({frog_pos.x-1, frog_pos.y});
-        }
-    }
-    if (key == ge211::Key::right() or key == ge211::Key::code('d')){
-        Position frog_pos = model_.frog_.get_frog_position();
-        if(frog_pos.x != (model_.get_board_size().width-1)){
-            model_.frog_.set_frog_position({frog_pos.x+1, frog_pos.y});
+        if (key == ge211::Key::right() or key == ge211::Key::code('d')) {
+            Position frog_pos = model_.frog_.get_frog_position();
+            if (frog_pos.x != (model_.get_board_size().width - 1)) {
+                model_.frog_.set_frog_position({frog_pos.x + 1, frog_pos.y});
+            }
         }
     }
 }
