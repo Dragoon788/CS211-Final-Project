@@ -24,7 +24,7 @@ TEST_CASE("going forward add score, back does not")
 
 TEST_CASE("when hit top, reset position")
 {
-    Model model;
+    Model model; 
 //    Controller controller;
 
     model.frog_.set_frog_position({2, 1});
