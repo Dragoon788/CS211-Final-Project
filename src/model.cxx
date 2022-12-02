@@ -66,3 +66,13 @@ Position Model::get_initial_frog_pos() const
 {
     return initial_frog_pos_;
 }
+
+int Model::get_score() const
+{
+    return score_counter;
+}
+
+void Model::set_score()
+{
+    score_counter++;
+}

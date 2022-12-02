@@ -16,6 +16,7 @@ void Controller::on_key_down(ge211::Key key){
         Position frog_pos = model_.frog_.get_frog_position();
         if(frog_pos.y != 2){
             model_.frog_.set_frog_position({frog_pos.x, frog_pos.y-1});
+            model_.set_score();
         }
         else{
             model_.frog_.set_frog_position(model_.get_initial_frog_pos());

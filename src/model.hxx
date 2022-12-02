@@ -42,6 +42,12 @@ public:
 ///  Getter function the starting frog position
     Position get_initial_frog_pos() const;
 
+/// Getter function for the score
+    int get_score() const;
+
+/// Add score to counter
+    void set_score();
+
 
 private:
 
@@ -55,6 +61,7 @@ private:
     std::vector<Car> cars_;
     Position initial_frog_pos_ = {board_size_/2, board_size_+1};
     int time_counter = 30;
+    int score_counter = 0;
 public:
     /// Constructs the frog class
     Frog frog_;
