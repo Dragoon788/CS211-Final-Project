@@ -23,9 +23,9 @@ TEST_CASE("going forward add score") // DONE
     CHECK(model.frog_.get_frog_life());
 
     // need to implement going forward adding score DONE
-    model.move_forward();
+    model.move_frog_forward();
     CHECK(model.get_score() == 1);
-    model.move_forward();
+    model.move_frog_forward();
     CHECK(model.frog_.get_frog_position().x == model.get_initial_frog_pos().x);
     CHECK(model.frog_.get_frog_position().y ==  model.get_initial_frog_pos().y - 2);
     CHECK(model.get_score() == 2);
@@ -39,10 +39,9 @@ TEST_CASE("when hit top, reset position") // DONE
     CHECK(model.frog_.get_frog_life());
 
     CHECK(model.frog_.get_frog_position(). y == 3);
-    model.move_forward();
-    model.move_forward();
+    model.move_frog_forward();
     CHECK(model.frog_.get_frog_position() == model.get_initial_frog_pos());
-    model.move_forward();
+    model.move_frog_forward();
     CHECK(model.frog_.get_frog_position().y == model.get_initial_frog_pos().y - 1);
 }
 
@@ -52,7 +51,7 @@ TEST_CASE("hit car, end game")
 
     Car c({3, 3});
     model.frog_.set_frog_position({3, 4});
-    model.move_forward();
+    model.move_frog_forward();
     CHECK(model.frog_.hits_car(model.frog_, c));
     CHECK(model.frog_.get_frog_life());
     CHECK(model.get_score() == 1);
@@ -63,18 +62,46 @@ TEST_CASE("accurate score") {
 
     model.frog_.set_frog_position(model.get_initial_frog_pos());
     CHECK(model.frog_.get_frog_life());
-    model.move_forward();
-    model.move_forward();
+    model.move_frog_forward();
+    model.move_frog_forward();
 
     CHECK(model.get_score() == 2);
-    model.move_forward();
-    model.move_forward();
-    model.move_forward();
+    model.move_frog_forward();
+    model.move_frog_forward();
+    model.move_frog_forward();
+    model.move_frog_back();
+    model.move_frog_forward();
 
     model.frog_.set_frog_life(false);
     
     CHECK(!model.frog_.get_frog_life());
     CHECK(model.get_score() == 5);
+}
+
+TEST_CASE("Can't leave screen") {
+    Model model;
+
+    model.frog_.set_frog_position({0,14});
+    CHECK(model.frog_.get_frog_life());
+    model.move_frog_left();
+    model.move_frog_left();
+    CHECK(model.frog_.get_frog_position().x == 0);
+    CHECK(model.frog_.get_frog_position().y == 14);
+
+
+    model.frog_.set_frog_position({14,14});
+    CHECK(model.frog_.get_frog_life());
+    model.move_frog_right();
+    model.move_frog_right();
+    CHECK(model.frog_.get_frog_position().x ==14);
+    CHECK(model.frog_.get_frog_position().y == 14);
+
+    model.frog_.set_frog_position({7,16});
+    CHECK(model.frog_.get_frog_life());
+    model.move_frog_back();
+    model.move_frog_back();
+    CHECK(model.frog_.get_frog_position().x == 7);
+    CHECK(model.frog_.get_frog_position().y == 16);
 }
 // go forward/back add/subtract score DONE
 // can't go off sides of screen

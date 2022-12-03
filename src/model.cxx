@@ -26,7 +26,7 @@ void Model::on_frame(double dt)
 {
     while(frog_.get_frog_life()){
         time_counter++;
-        if (time_counter < 30) {
+        if (time_counter < 15) {
             return;
         }
         else{
@@ -68,24 +68,49 @@ int Model::get_score() const
 
 void Model::set_score()
 {
-    if (fake_score == score_counter) {
+    if (fake_score_ == score_counter) {
         score_counter++;
     }
-    fake_score++;
+    fake_score_++;
 }
 
 void Model::subtract_score()
 {
-    fake_score--;
+    fake_score_--;
 }
 
-void Model::move_forward()
+void Model::move_frog_forward()
 {
     Position frog_pos = frog_.get_frog_position();
-    if (frog_pos.y > 2) {
+    if (frog_pos.y > 3) {
         frog_.set_frog_position({frog_pos.x, frog_pos.y - 1});
         set_score();
     } else {
         frog_.set_frog_position(get_initial_frog_pos());
+    }
+}
+
+void Model::move_frog_back()
+{
+    Position frog_pos = frog_.get_frog_position();
+    if (frog_pos.y != 16) {
+        frog_.set_frog_position({frog_pos.x, frog_pos.y+1});
+        subtract_score();
+    }
+}
+
+void Model::move_frog_left()
+{
+    Position frog_pos = frog_.get_frog_position();
+    if (frog_pos.x != 0) {
+        frog_.set_frog_position({frog_pos.x - 1, frog_pos.y});
+    }
+}
+
+void Model::move_frog_right()
+{
+    Position frog_pos = frog_.get_frog_position();
+    if (frog_pos.x != (get_board_size().width - 1)) {
+        frog_.set_frog_position({frog_pos.x + 1, frog_pos.y});
     }
 }

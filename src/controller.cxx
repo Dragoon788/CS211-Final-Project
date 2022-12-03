@@ -14,27 +14,16 @@ void Controller::on_key_down(ge211::Key key)
 {
     if (model_.frog_.get_frog_life()) {
         if (key == ge211::Key::up() or key == ge211::Key::code('w')) {
-            model_.move_forward();
+            model_.move_frog_forward();
         }
         if (key == ge211::Key::down() or key == ge211::Key::code('s')) {
-            Position frog_pos = model_.frog_.get_frog_position();
-            if (frog_pos.y != (model_.get_board_size().height) + 1) {
-                model_.frog_.set_frog_position({frog_pos.x, frog_pos.y + 1});
-                model_.subtract_score();
-            }
-
+            model_.move_frog_back();
         }
         if (key == ge211::Key::left() or key == ge211::Key::code('a')) {
-            Position frog_pos = model_.frog_.get_frog_position();
-            if (frog_pos.x != 0) {
-                model_.frog_.set_frog_position({frog_pos.x - 1, frog_pos.y});
-            }
+            model_.move_frog_left();
         }
         if (key == ge211::Key::right() or key == ge211::Key::code('d')) {
-            Position frog_pos = model_.frog_.get_frog_position();
-            if (frog_pos.x != (model_.get_board_size().width - 1)) {
-                model_.frog_.set_frog_position({frog_pos.x + 1, frog_pos.y});
-            }
+            model_.move_frog_right();
         }
     }
 }

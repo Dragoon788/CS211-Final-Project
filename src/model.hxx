@@ -3,6 +3,7 @@
 #include <ge211.hxx>
 #include "frog.hxx"
 #include "car.hxx"
+//#include "controller.hxx"
 
 class Model
 {
@@ -48,7 +49,19 @@ public:
 // Subtract fake_score
     void subtract_score();
 
-    void move_forward();
+/// Move frog position forward
+    void move_frog_forward();
+
+/// Move frog position back
+    void move_frog_back();
+
+
+/// Move frog left
+    void move_frog_left();
+
+/// Move frog right
+    void move_frog_right();
+
 private:
 
     int const board_size_ = 15;
@@ -57,9 +70,9 @@ private:
                                              {-3, 11},{5,12}, {8,13}};
     std::vector<Car> cars_;
     Position initial_frog_pos_ = {board_size_ / 2, board_size_ + 1};
-    int time_counter = 30;
+    int time_counter = 15;
     int score_counter = 0;
-    int fake_score = 0;
+    int fake_score_ = 0;
 
 public:
     /// Constructs the frog class

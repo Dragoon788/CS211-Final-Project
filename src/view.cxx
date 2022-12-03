@@ -38,14 +38,14 @@ View::draw(Sprite_set& set) {
     // This needs to do something!
     if (!model_.frog_.get_frog_life()) {
         // Basically checks if game is over and then executes game over sequence
-        set.add_sprite(game_over_sprite_, {initial_window_dimensions().width / (7 / 2), initial_window_dimensions().height / 2});
+        set.add_sprite(game_over_sprite_, {initial_window_dimensions().width /3 - 20, initial_window_dimensions().height/2 - 100});
         ge211::Text_sprite::Builder score_builder(videogame72_);
         int final_score = model_.get_score();
         score_builder.add_message(std::to_string(final_score));
-        set.add_sprite(score_words_sprite_, {initial_window_dimensions().width / (7 / 2),
-                                             initial_window_dimensions().height / 2 + 69}, 4);
-        set.add_sprite(score_sprite_, {initial_window_dimensions().width / (7 / 2) + 200,
-                                       initial_window_dimensions().height / 2 + 69}, 4);
+        set.add_sprite(score_words_sprite_, {initial_window_dimensions().width /3 - 20,
+                                             initial_window_dimensions().height / 2 + 100}, 4);
+        set.add_sprite(score_sprite_, {initial_window_dimensions().width / 3 + 200,
+                                       initial_window_dimensions().height / 2 + 100}, 4);
     } else {
         /// Initializes the builder to change the score sprite
         ge211::Text_sprite::Builder score_builder(videogame72_);
